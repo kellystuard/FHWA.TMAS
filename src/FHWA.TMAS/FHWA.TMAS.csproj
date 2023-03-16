@@ -7,11 +7,10 @@
       See Chapter 7 of https://www.fhwa.dot.gov/policyinformation/tmguide/tmg_fhwa_pl_17_003.pdf
     </Description>
     <PackageProjectUrl>https://github.com/kellystuard/FHWA.TMAS</PackageProjectUrl>
-
-    <!-- A list of tags to help the search engine to understand the content of the package -->
     <PackageTags>library, FHWA, TMAS</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -45,6 +44,7 @@
 
   <ItemGroup>
     <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
