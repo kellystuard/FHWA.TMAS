@@ -23,7 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FHWA.TMAS\FHWA.TMAS.csproj" />
+    <ProjectReference Include="..\..\src\FHWA.TMAS\Fhwa.Tmas.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TrafficFiles\17abcxyz011950.sta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
