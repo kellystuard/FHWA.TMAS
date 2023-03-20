@@ -5,19 +5,16 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A6717E8-EF09-44B6-81DD-1B51F732F2B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHWA.TMAS", "src\FHWA.TMAS\FHWA.TMAS.csproj", "{BFC1364C-407F-4DBF-9448-1AEAEC73CAFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fhwa.Tmas", "src\FHWA.TMAS\Fhwa.Tmas.csproj", "{BFC1364C-407F-4DBF-9448-1AEAEC73CAFE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C08EC80D-84DC-4AAE-B770-A2636B6CD4B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHWA.TMAS.Test", "test\FHWA.TMAS.Test\FHWA.TMAS.Test.csproj", "{7E399450-2371-4FF7-BF6D-9F9D76CB0C5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fhwa.Tmas.Test", "test\FHWA.TMAS.Test\Fhwa.Tmas.Test.csproj", "{7E399450-2371-4FF7-BF6D-9F9D76CB0C5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BFC1364C-407F-4DBF-9448-1AEAEC73CAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -29,8 +26,14 @@ Global
 		{7E399450-2371-4FF7-BF6D-9F9D76CB0C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E399450-2371-4FF7-BF6D-9F9D76CB0C5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BFC1364C-407F-4DBF-9448-1AEAEC73CAFE} = {3A6717E8-EF09-44B6-81DD-1B51F732F2B5}
 		{7E399450-2371-4FF7-BF6D-9F9D76CB0C5B} = {C08EC80D-84DC-4AAE-B770-A2636B6CD4B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69C215BA-A23B-4096-9921-562203A0F213}
 	EndGlobalSection
 EndGlobal
