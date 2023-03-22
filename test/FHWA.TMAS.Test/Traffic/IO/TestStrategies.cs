@@ -5,7 +5,7 @@ namespace Fhwa.Tmas.Test.Traffic.IO;
 public sealed class TestStrategies
 {
 	[Theory]
-	[MemberData(nameof(DataWriteLeftZeroFilledString))]
+	[MemberData(nameof(DataLeftZeroFilledString))]
 	public void TestWriteLeftZeroFilledString(string expected, int offset, int length, string value)
 	{
 		var buffer = new char[10];
@@ -15,7 +15,16 @@ public sealed class TestStrategies
 		Assert.Equal(expected, result);
 	}
 
-	public static IEnumerable<object[]> DataWriteLeftZeroFilledString()
+	[Theory]
+	[MemberData(nameof(DataLeftZeroFilledString))]
+	public void TestReadLeftZeroFilledString(string value, int offset, int length, string expected)
+	{
+		var result = Strategies.ReadLeftZeroFilledString(value, offset, length);
+
+		Assert.Equal(expected, result);
+	}
+
+	public static IEnumerable<object[]> DataLeftZeroFilledString()
 	{
 		yield return new object[] { "0000012345", 1, 10, "12345" };
 		yield return new object[] { "1234512345", 1, 10, "1234512345" };
@@ -25,7 +34,7 @@ public sealed class TestStrategies
 	}
 
 	[Theory]
-	[MemberData(nameof(DataWriteDecimal))]
+	[MemberData(nameof(DataDecimal))]
 	public void TestWriteDecimal(string expected, int offset, int length, double value, int leftShift)
 	{
 		var buffer = new char[8];
@@ -35,9 +44,45 @@ public sealed class TestStrategies
 		Assert.Equal(expected, result);
 	}
 
-	public static IEnumerable<object[]> DataWriteDecimal()
+	[Theory]
+	[MemberData(nameof(DataDecimal))]
+	public void TestReadDecimal(string value, int offset, int length, double expected, int leftShift)
+	{
+		var result = Strategies.ReadDecimal(value, offset, length, leftShift);
+
+		Assert.Equal(expected, result);
+	}
+
+	public static IEnumerable<object[]> DataDecimal()
 	{
 		yield return new object[] { "\0007856\0", 2, 6, 7.856, 3 };
 		yield return new object[] { "39178751", 1, 8, 39.178751, 6 };
+	}
+
+	[Theory]
+	[MemberData(nameof(DataDate))]
+	public void TestWriteDate(string expected, int offset, DateOnly value)
+	{
+		var buffer = new char[10];
+		Strategies.WriteDate(buffer, offset, value);
+		var result = new string(buffer, 0, buffer.Length);
+
+		Assert.Equal(expected, result);
+	}
+
+	[Theory]
+	[MemberData(nameof(DataDate))]
+	public void TestReadDate(string value, int offset, DateOnly expected)
+	{
+		var result = Strategies.ReadDate(value, offset);
+
+		Assert.Equal(expected, result);
+	}
+
+	public static IEnumerable<object[]> DataDate()
+	{
+		yield return new object[] { "\0\020210805", 3, new DateOnly(2021, 8, 5) };
+		yield return new object[] { "\020191206\0", 2, new DateOnly(2019, 12, 6) };
+		yield return new object[] { "20181102\0\0", 1, new DateOnly(2018, 11, 2) };
 	}
 }

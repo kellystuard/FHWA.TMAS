@@ -16,7 +16,7 @@ public interface ITrafficFormatter<T> where T : ITrafficData
 	/// </summary>
 	/// <param name="line">Single line from file.</param>
 	/// <returns>Instance of the concrete traffic data type.</returns>
-	T FromLine(ReadOnlySpan<char> line);
+	T FromLine(in ReadOnlySpan<char> line);
 
 	/// <summary>
 	/// Formats an instance of the concrete traffic data type to a single line to write to file.

@@ -3,13 +3,13 @@
 /// <summary>
 /// Handles the formatting to and from disk for <see cref="StationDescription"/>.
 /// </summary>
-public class StationDescriptionFormatter : ITrafficFormatter<StationDescription>
+public sealed class StationDescriptionFormatter : ITrafficFormatter<StationDescription>
 {
 	/// <inheritdoc />
 	public static string FileExtension => "sta";
 
 	/// <inheritdoc />
-	public StationDescription FromLine(ReadOnlySpan<char> line)
+	public StationDescription FromLine(in ReadOnlySpan<char> line)
 	{
 		if (Strategies.ReadChar(line, 1) != 'S')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read station description records");
