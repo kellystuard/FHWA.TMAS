@@ -8,16 +8,27 @@ public sealed class TestFileReads
 	[Fact]
 	public void TestReadVolumeSite4LaneCombinedStationFile()
 	{
-		//var reader = new TrafficReader<StationDescription, StationDescriptionFormatter>(path: "TrafficFiles",
-		//	trafficFile: VolumeSite4LaneCombinedStationFile);
-		//var writer = new TrafficWriter<StationDescription, StationDescriptionFormatter>(path: "TrafficFiles",
-		//	trafficFile: VolumeSite4LaneCombinedStationFile) with
-		//{
-		//	DataMonth = VolumeSite4LaneCombinedStationFile.DataMonth + 1,
-		//});
-
-		//foreach (var station in reader.ReadAll())
-		//	writer.Write(station);
+		Directory.CreateDirectory("TrafficOutput");
+		try
+		{
+			using (var reader = new TrafficReader<StationDescription, StationDescriptionFormatter>(path: "TrafficFiles",
+				trafficFile: VolumeSite4LaneCombinedStationFile))
+			using (var writer = new TrafficWriter<StationDescription, StationDescriptionFormatter>(path: "TrafficOutput",
+				trafficFile: VolumeSite4LaneCombinedStationFile))
+			{
+				foreach (var station in reader.ReadAll())
+					writer.WriteAll(new[] { station });
+			}
+			var fileName = VolumeSite4LaneCombinedStationFile.GenerateFileName(StationDescriptionFormatter.FileExtension);
+			Assert.Equal(
+				File.ReadAllText(Path.Combine("TrafficFiles", fileName)),
+				File.ReadAllText(Path.Combine("TrafficOutput", fileName))
+			);
+		}
+		finally
+		{
+			Directory.Delete("TrafficOutput", recursive: true);
+		}
 	}
 
 	//public async Task TestReadVolumeSite4LaneCombinedStationFile()

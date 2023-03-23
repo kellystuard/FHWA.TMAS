@@ -11,6 +11,8 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 	/// <inheritdoc />
 	public HourlyTrafficVolume FromLine(in ReadOnlySpan<char> line)
 	{
+		if (line.Length != 143)
+			throw new ArgumentException("Hourly traffic lines must be exactly 143 characters long", nameof(line));
 		if (Strategies.ReadChar(line, 1) != '3')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read hourly traffic volume records");
 

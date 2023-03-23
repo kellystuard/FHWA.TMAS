@@ -11,6 +11,8 @@ public sealed class StationDescriptionFormatter : ITrafficFormatter<StationDescr
 	/// <inheritdoc />
 	public StationDescription FromLine(in ReadOnlySpan<char> line)
 	{
+		if(line.Length != 213)
+			throw new ArgumentException("Station description lines must be exactly 213 characters long", nameof(line));
 		if (Strategies.ReadChar(line, 1) != 'S')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read station description records");
 
