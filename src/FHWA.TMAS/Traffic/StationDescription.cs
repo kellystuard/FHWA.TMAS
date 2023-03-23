@@ -20,12 +20,12 @@
 /// current and reflect what is in the field.
 /// </para>
 /// </remarks>
-public /*readonly*/ record struct StationDescription : ITrafficData
+public readonly record struct StationDescription : ITrafficData
 {
 	/// <summary>
 	/// FIPS State Codes (Columns 2-3) – Critical
 	/// </summary>
-	public Fips.State StateCode { get; set; }
+	public Fips.State StateCode { get; init; }
 	/// <summary>
 	/// Station Identification (Columns 4-9) – Critical
 	/// </summary>
@@ -41,7 +41,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// format is used for all fields on the record.
 	/// </para>
 	/// </remarks>
-	public string StationID { get; set; }
+	public string StationID { get; init; }
 	/// <summary>
 	/// Direction of Travel Code (Column 10) – Critical
 	/// </summary>
@@ -50,7 +50,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// record for each direction identified in Table 7-3. Whether or not lanes are combined in each
 	/// direction depends on field #5, Lane of Travel.
 	/// </remarks>
-	public DirectionOfTravel DirectionOfTravelCode { get; set; }
+	public DirectionOfTravel DirectionOfTravelCode { get; init; }
 	/// <summary>
 	/// Lane of Travel (Column 11) – Critical
 	/// </summary>
@@ -65,21 +65,21 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// individual direction.
 	/// </para>
 	/// </remarks>
-	public int LaneOfTravelCode { get; set; }
+	public int LaneOfTravelCode { get; init; }
 	/// <summary>
 	/// Year of Data (Columns 12-15) – Critical
 	/// </summary>
 	/// <remarks>
 	/// Code the four digits of the year in which the data were collected.
 	/// </remarks>
-	public int YearOfData { get; set; }
+	public int YearOfData { get; init; }
 	/// <summary>
 	/// Functional Classification Code (Columns 16-17) – Critical
 	/// </summary>
 	/// <remarks>
 	/// Column 16 contains one of the Functional Classification Codes listed in Table 7-5.
 	/// </remarks>
-	public FunctionalPurpose FunctionalPurpose { get; set; }
+	public FunctionalPurpose FunctionalPurpose { get; init; }
 	/// <summary>
 	/// Functional Classification Code (Columns 16-17) – Critical
 	/// </summary>
@@ -87,7 +87,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Column 17 contains either an “R” for rural or “U” for urban.For example, a code of 2R indicates 
 	/// a Rural Principal Arterial – Other Freeways and Expressways.
 	/// </remarks>
-	public FunctionalType FunctionalTypeCode { get; set; }
+	public FunctionalType FunctionalTypeCode { get; init; }
 	/// <summary>
 	/// Number of Lanes in Direction Indicated (Column 18) – Critical
 	/// </summary>
@@ -95,7 +95,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Code the number of lanes in one direction at the site regardless of the number of lanes being
 	/// monitored.Use 9 if there are more than eight lanes.
 	/// </remarks>
-	public int Lanes { get; set; }
+	public int Lanes { get; init; }
 	/// <summary>
 	/// Sample Type for TMAS (Column 19) – Critical
 	/// </summary>
@@ -103,7 +103,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Data submitted to TMAS may be from research or other needs that do not follow the trends in a
 	/// given State and may not be for long-term purposes.
 	/// </remarks>
-	public bool StationUsedForTmas { get; set; }
+	public bool StationUsedForTmas { get; init; }
 	/// <summary>
 	/// Number of Lanes Monitored for Traffic Volume (Column 20) – Critical
 	/// </summary>
@@ -111,11 +111,11 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Code the number of lanes in one direction that are monitored at this site.Use 9 if there are more
 	/// than eight lanes.
 	/// </remarks>
-	public int LanesMonitoredForVolume { get; set; }
+	public int LanesMonitoredForVolume { get; init; }
 	/// <summary>
 	/// Method of Traffic Volume Counting (Column 21) – Critical
 	/// </summary>
-	public MethodOfVolumeCounting MethodOfVolumeCounting { get; set; }
+	public MethodOfVolumeCounting MethodOfVolumeCounting { get; init; }
 	/// <summary>
 	/// Number of Lanes Monitored for Vehicle Classification and/or speed (Column 22) – Critical
 	/// </summary>
@@ -123,14 +123,14 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Code the number of lanes in one direction that are monitored for vehicle classification and/or
 	/// speed at this site.Use 9 if there are more than eight lanes in a given direction.
 	/// </remarks>
-	public int LanesMonitoredForClassificationAndOrSpeed { get; set; }
+	public int LanesMonitoredForClassificationAndOrSpeed { get; init; }
 	/// <summary>
 	/// Mechanism of Vehicle Classification and/or speed (Column 23) – Critical/Optional
 	/// </summary>
 	/// <remarks>
 	/// <see langword="null"/> this field when unused.
 	/// </remarks>
-	public MechanismOfClassificationOrSpeed? MechanismOfClassificationOrSpeed { get; set; }
+	public MechanismOfClassificationOrSpeed? MechanismOfClassificationOrSpeed { get; init; }
 	/// <summary>
 	/// Method for Vehicle Classification (Column 24) – Critical/Optional
 	/// </summary>
@@ -142,7 +142,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public MethodOfClassification? MethodOfClassification { get; set; }
+	public MethodOfClassification? MethodOfClassification { get; init; }
 	/// <summary>
 	/// Vehicle Classification Groupings (Columns 25-26) – Critical/Optional
 	/// </summary>
@@ -164,7 +164,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public ClassificationGroupings? ClassificationGroupings { get; set; }
+	public ClassificationGroupings? ClassificationGroupings { get; init; }
 	/// <summary>
 	/// Number of Lanes Monitored for Truck Weight (Column 27) – Critical
 	/// </summary>
@@ -172,14 +172,14 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// Code the number of lanes in one direction that are monitored for truck weight at this site.Use 9
 	/// if there are more than eight lanes.
 	/// </remarks>
-	public int LanesMonitoredForTruckWeight { get; set; }
+	public int LanesMonitoredForTruckWeight { get; init; }
 	/// <summary>
 	/// Method of Truck Weighing (Column 28) – Critical/Optional
 	/// </summary>
 	/// <remarks>
 	/// <see langword="null"/> this field when unused.
 	/// </remarks>
-	public MethodOfTruckWeighing? MethodOfTruckWeighing { get; set; }
+	public MethodOfTruckWeighing? MethodOfTruckWeighing { get; init; }
 	/// <summary>
 	/// Calibration of Weighing System (Column 29) – Critical/Optional
 	/// </summary>
@@ -193,21 +193,21 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public CalibrationOfWeighing? CalibrationOfWeighing { get; set; }
+	public CalibrationOfWeighing? CalibrationOfWeighing { get; init; }
 	/// <summary>
 	/// Method of Data Retrieval (Column 30) – Critical
 	/// </summary>
 	/// <remarks>
 	/// <see langword="null"/> this field when unused.
 	/// </remarks>
-	public MethodOfDataRetrieval? MethodOfDataRetrieval { get; set; }
+	public MethodOfDataRetrieval? MethodOfDataRetrieval { get; init; }
 	/// <summary>
 	/// Type of Sensor (Column 31) – Critical
 	/// </summary>
 	/// <remarks>
 	/// Code the type of sensor used for traffic detection.
 	/// </remarks>
-	public TypeOfSensor TypeOfSensor1 { get; set; }
+	public TypeOfSensor TypeOfSensor1 { get; init; }
 	/// <summary>
 	/// Second Type of Sensor (Column 32) – Optional
 	/// </summary>
@@ -220,7 +220,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public TypeOfSensor? TypeOfSensor2 { get; set; }
+	public TypeOfSensor? TypeOfSensor2 { get; init; }
 	/// <summary>
 	/// Primary Purpose (Column 33) – Critical
 	/// </summary>
@@ -228,7 +228,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// This field indicates the primary purpose for installing the station and hence which organization is
 	/// responsible for it and supplies the data.
 	/// </remarks>
-	public StationPurpose PrimaryPurpose { get; set; }
+	public StationPurpose PrimaryPurpose { get; init; }
 	/// <summary>
 	/// Linear Referencing System Route ID (Columns 34-93) (60 characters) – Critical
 	/// </summary>
@@ -246,7 +246,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// enter the 60 rightmost characters in Field 23 of this station description record.
 	/// </para>
 	/// </remarks>
-	public string LrsRouteID { get; set; }
+	public string LrsRouteID { get; init; }
 	/// <summary>
 	/// Linear Referencing System Location Point (Columns 94-101) (8 digits) – Critical
 	/// </summary>
@@ -257,7 +257,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// ending point for the HPMS roadway section upon which the station is located. It is coded in
 	/// miles, to the nearest thousandth of a mile, with an implied decimal in the middle: XXXXX.XXX.
 	/// </remarks>
-	public double LrsLocation { get; set; }
+	public double LrsLocation { get; init; }
 	/// <summary>
 	/// Latitude (Columns 102-109) – Critical
 	/// </summary>
@@ -266,7 +266,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// understood as XX.XXX XXX.If the value is 39.178 400 (Illinois), then the field is coded as
 	/// ‘39178751’, with an implied decimal point after the second digit.
 	/// </remarks>
-	public double Latitude { get; set; }
+	public double Latitude { get; init; }
 	/// <summary>
 	/// Longitude (Columns 110-118) – Critical
 	/// </summary>
@@ -275,7 +275,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// understood as XXX.XXX XXX. If the value is 088.352 540 (Illinois), then the field is coded as
 	/// ‘088352540’, with an implied decimal point after the third digit.
 	/// </remarks>
-	public double Longitude { get; set; }
+	public double Longitude { get; init; }
 	/// <summary>
 	/// LTPP Site Identification (Columns 119-122) – Optional
 	/// </summary>
@@ -287,7 +287,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public string? LttpSiteID { get; set; }
+	public string? LttpSiteID { get; init; }
 	/// <summary>
 	/// Previous Station ID (Columns 123-128) – Optional
 	/// </summary>
@@ -299,14 +299,14 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public string? PreviousStationID { get; set; }
+	public string? PreviousStationID { get; init; }
 	/// <summary>
 	/// Year Station Established (Columns 129-132) – Critical
 	/// </summary>
 	/// <remarks>
 	/// Code the four digits of the appropriate year if known.
 	/// </remarks>
-	public int? YearEstablished { get; set; }
+	public int? YearEstablished { get; init; }
 	/// <summary>
 	/// Year Station Discontinued (Columns 133-136) – Optional
 	/// </summary>
@@ -318,7 +318,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public int? YearDiscontinued { get; set; }
+	public int? YearDiscontinued { get; init; }
 	/// <summary>
 	/// FIPS County Code (Columns 137-139) – Critical
 	/// </summary>
@@ -327,7 +327,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// 6, Counties of the States of the United States).
 	/// </remarks>
 	/// <example>Should be changed to enum from this source: https://raw.githubusercontent.com/kjhealy/us-county/master/data/census/fips-by-state.csv</example>
-	public int CountyCode { get; set; }
+	public int CountyCode { get; init; }
 	/// <summary>
 	/// HPMS Sample Type (Column 140) – Critical
 	/// </summary>
@@ -337,7 +337,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <item><description><see langword="true"/> = Yes, on an HPMS standard sample section</description></item>
 	/// </list>
 	/// </remarks>
-	public bool HpmsSampleType { get; set; }
+	public bool HpmsSampleType { get; init; }
 	/// <summary>
 	/// HPMS Sample Identifier (Columns 141-152) – Critical/Optional
 	/// </summary>
@@ -350,7 +350,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public string? HpmsSampleID { get; set; }
+	public string? HpmsSampleID { get; init; }
 	/// <summary>
 	/// National Highway System (Column 153) – Critical
 	/// </summary>
@@ -360,14 +360,14 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <item><description><see langword="true"/> = Yes, on National Highway System</description></item>
 	/// </list>
 	/// </remarks>
-	public bool NationalHighwaySystem { get; set; }
+	public bool NationalHighwaySystem { get; init; }
 	/// <summary>
 	/// Posted Route Signing (Column 154-155) – Critical
 	/// </summary>
 	/// <remarks>
 	/// This is the same as Route Signing in HPMS Field Manual.
 	/// </remarks>
-	public PostedRouteSigning PostedRouteSigning { get; set; }
+	public PostedRouteSigning PostedRouteSigning { get; init; }
 	/// <summary>
 	/// Posted Signed Route Number (Columns 156-163) – Critical
 	/// </summary>
@@ -380,7 +380,7 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// If the station is located on a city street, <see langword="null"/> this field.
 	/// </para>
 	/// </remarks>
-	public string? PostedRouteNumber { get; set; }
+	public string? PostedRouteNumber { get; init; }
 	/// <summary>
 	/// Station Location (Columns 164-213) – Critical
 	/// </summary>
@@ -396,16 +396,5 @@ public /*readonly*/ record struct StationDescription : ITrafficData
 	/// <see langword="null"/> this field when unused.
 	/// </para>
 	/// </remarks>
-	public string? StationLocation { get; set; }
-
-	/// <summary>
-	/// Record Type (Column 1) – Critical
-	/// S = station description record (Code the letter “S” in the first column.)
-	/// </summary>
-	static char ITrafficData.RecordType => 'S';
-
-	/// <summary>
-	/// File extension that should be used for writing all records of this type.
-	/// </summary>
-	public static string FileExtension => "sta";
+	public string? StationLocation { get; init; }
 }

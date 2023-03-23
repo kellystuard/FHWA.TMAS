@@ -5,8 +5,4 @@
 /// </summary>
 public interface ITrafficData
 {
-	/// <summary>
-	/// For station description records, the value is 'S'.
-	/// </summary>
-	static abstract char RecordType { get; }
 }
