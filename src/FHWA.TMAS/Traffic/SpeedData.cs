@@ -85,7 +85,7 @@ public readonly record struct SpeedData : ITrafficData
 	/// Code the beginning of the hour in which the count was taken.
 	/// Covers 3 fields: Year of Data, Month of Data, Day, and Hour of Data.
 	/// </remarks>
-	public DateOnly DateOfData { get; init; }
+	public DateTime DateOfData { get; init; }
 	/// <summary>
 	/// Speed Data Time Interval (Column 22) – Optional
 	/// </summary>

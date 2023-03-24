@@ -159,18 +159,34 @@ public static class Strategies
 	/// </summary>
 	/// <param name="line">Line to be parsed.</param>
 	/// <param name="offset">1-based character index into line for beginning result.</param>
-	/// <param name="includeHour">Also read hour, in addition to year and month.</param>
 	/// <returns>Date at location.</returns>
-	public static DateOnly ReadDate(in ReadOnlySpan<char> line, int offset, bool includeHour = false)
-		=> DateOnly.ParseExact(line.Slice(offset - 1, includeHour ? 8 : 10), "yyyyMMdd");
+	public static DateOnly ReadDate(in ReadOnlySpan<char> line, int offset)
+		=> DateOnly.ParseExact(line.Slice(offset - 1, 8), "yyyyMMdd");
 
 	/// <summary>
 	/// Inserts value into a portion of a line. Blank-fills extra characters.
 	/// </summary>
 	/// <param name="result">Line to insert the value into.</param>
 	/// <param name="offset">1-based character index into line for beginning of <paramref name="value"/>.</param>
-	/// <param name="value">Value to insert. If <see langword="null"/>, inserts all blanks.</param>
-	/// <param name="includeHour">Also write hour, in addition to year and month.</param>
-	public static void WriteDate(char[] result, int offset, DateOnly value, bool includeHour = false)
-		=> value.ToString("yyyyMMdd").CopyTo(0, result, offset - 1, includeHour ? 8 : 10);
+	/// <param name="value">Value to insert.</param>
+	public static void WriteDate(char[] result, int offset, DateOnly value)
+		=> value.ToString("yyyyMMdd").CopyTo(0, result, offset - 1, 8);
+
+	/// <summary>
+	/// Parses a portion of a line.
+	/// </summary>
+	/// <param name="line">Line to be parsed.</param>
+	/// <param name="offset">1-based character index into line for beginning result.</param>
+	/// <returns>Date including hour at location.</returns>
+	public static DateTime ReadDateTime(in ReadOnlySpan<char> line, int offset)
+		=> DateTime.ParseExact(line.Slice(offset - 1, 10), "yyyyMMddHH", null);
+
+	/// <summary>
+	/// Inserts value into a portion of a line. Blank-fills extra characters.
+	/// </summary>
+	/// <param name="result">Line to insert the value into.</param>
+	/// <param name="offset">1-based character index into line for beginning of <paramref name="value"/>.</param>
+	/// <param name="value">Value to insert.</param>
+	public static void WriteDateTime(char[] result, int offset, DateTime value)
+		=> value.ToString("yyyyMMddHH").CopyTo(0, result, offset - 1, 10);
 }

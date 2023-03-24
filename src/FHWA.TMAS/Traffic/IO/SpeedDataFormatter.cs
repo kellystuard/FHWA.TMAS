@@ -15,10 +15,10 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 			throw new ArgumentException("Speed data lines must be at least 105 characters long", nameof(line));
 
 		var binCount = Strategies.ReadInt32(line, 24, 2);
-		var recordLength = 30 + (binCount * 5);
+		var requiredLength = 30 + (binCount * 5);
 
-		if (line.Length != recordLength)
-			throw new ArgumentException($"Speed data lines with {binCount} bins must be exactly {recordLength} characters long", nameof(line));
+		if (line.Length < requiredLength)
+			throw new ArgumentException($"Speed data lines with {binCount} bins must be at least {requiredLength} characters long", nameof(line));
 
 		if (Strategies.ReadChar(line, 1) != 'T')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read speed data records");
@@ -29,7 +29,7 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 			StationID = Strategies.ReadLeftZeroFilledString(line, 4, 6) ?? throw new NullReferenceException(),
 			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 10) ?? throw new NullReferenceException(),
 			LaneOfTravelCode = Strategies.ReadNumber(line, 11) ?? throw new NullReferenceException(nameof(SpeedData.LaneOfTravelCode) + "is not optional"),
-			DateOfData = Strategies.ReadDate(line, 12, includeHour: true),
+			DateOfData = Strategies.ReadDateTime(line, 12),
 			TimeInterval = (SpeedDataTimeInterval?)Strategies.ReadChar(line, 22),
 			DefinitionOfFirstSpeedBin = Strategies.ReadNumber(line, 23),
 			NumberOfSpeedBins = Strategies.ReadInt32(line, 24, 2),
@@ -46,8 +46,6 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 	/// <inheritdoc />
 	public ReadOnlySpan<char> ToLine(SpeedData item)
 	{
-		throw new NotImplementedException();
-
 		var result = new char[155];
 
 		Strategies.WriteChar(result, 1, 'T');
@@ -55,7 +53,7 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 		Strategies.WriteLeftZeroFilledString(result, 4, 6, item.StationID);
 		Strategies.WriteChar(result, 10, (char)item.DirectionOfTravelCode);
 		Strategies.WriteNumber(result, 11, item.LaneOfTravelCode);
-		Strategies.WriteDate(result, 12, item.DateOfData);
+		Strategies.WriteDateTime(result, 12, item.DateOfData);
 		Strategies.WriteChar(result, 22, (char?)item.TimeInterval);
 		Strategies.WriteNumber(result, 23, item.DefinitionOfFirstSpeedBin);
 		Strategies.WriteInt32(result, 24, 2, item.NumberOfSpeedBins);
