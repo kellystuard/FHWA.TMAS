@@ -18,15 +18,15 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 
 		var result = new HourlyTrafficVolume()
 		{
-			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(),
-			FunctionalPurpose = (FunctionalPurpose?)Strategies.ReadChar(line, 4) ?? throw new NullReferenceException(),
-			FunctionalTypeCode = (FunctionalType?)Strategies.ReadChar(line, 5) ?? throw new NullReferenceException(),
-			StationID = Strategies.ReadLeftZeroFilledString(line, 6, 6) ?? throw new NullReferenceException(),
-			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 12) ?? throw new NullReferenceException(),
-			LaneOfTravelCode = Strategies.ReadNumber(line, 13),
+			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.StateCode) + "is not optional"),
+			FunctionalPurpose = (FunctionalPurpose?)Strategies.ReadChar(line, 4) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.FunctionalPurpose) + "is not optional"),
+			FunctionalTypeCode = (FunctionalType?)Strategies.ReadChar(line, 5) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.FunctionalTypeCode) + "is not optional"),
+			StationID = Strategies.ReadLeftZeroFilledString(line, 6, 6) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.StationID) + "is not optional"),
+			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 12) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.DirectionOfTravelCode) + "is not optional"),
+			LaneOfTravelCode = Strategies.ReadNumber(line, 13) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.LaneOfTravelCode) + "is not optional"),
 			DateOfData = Strategies.ReadDate(line, 14),
 			VolumeCounted = new int?[24],
-			Restrictions = (Restrictions?)Strategies.ReadChar(line, 143) ?? throw new NullReferenceException(),
+			Restrictions = (Restrictions?)Strategies.ReadChar(line, 143) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.Restrictions) + "is not optional"),
 		};
 
 		for (int i = 0; i < 24; i++)

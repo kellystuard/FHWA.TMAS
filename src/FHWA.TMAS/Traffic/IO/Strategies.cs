@@ -116,8 +116,11 @@ public static class Strategies
 	/// <param name="line">Line to be parsed.</param>
 	/// <param name="offset">1-based character index into line for number.</param>
 	/// <returns>Number at location.</returns>
-	public static int ReadNumber(in ReadOnlySpan<char> line, int offset)
-		=> line[offset - 1] - '0';
+	public static int? ReadNumber(in ReadOnlySpan<char> line, int offset)
+	{
+		var result = line[offset - 1];
+		return result == ' ' ? null : result - '0';
+	}
 
 	/// <summary>
 	/// Inserts a single-digit number into a single character of a line.
@@ -125,8 +128,8 @@ public static class Strategies
 	/// <param name="result">Line to insert the value into.</param>
 	/// <param name="offset">1-based character index into line for beginning of <paramref name="value"/>.</param>
 	/// <param name="value">Value to insert.</param>
-	public static void WriteNumber(char[] result, int offset, int value)
-		=> result[offset - 1] = (char)(value + '0');
+	public static void WriteNumber(char[] result, int offset, int? value)
+		=> result[offset - 1] = (value.HasValue) ? (char)(value + '0') : ' ';
 
 	/// <summary>
 	/// Parses a portion of a line.
@@ -156,9 +159,10 @@ public static class Strategies
 	/// </summary>
 	/// <param name="line">Line to be parsed.</param>
 	/// <param name="offset">1-based character index into line for beginning result.</param>
+	/// <param name="includeHour">Also read hour, in addition to year and month.</param>
 	/// <returns>Date at location.</returns>
-	public static DateOnly ReadDate(in ReadOnlySpan<char> line, int offset)
-		=> DateOnly.ParseExact(line.Slice(offset - 1, 8), "yyyyMMdd");
+	public static DateOnly ReadDate(in ReadOnlySpan<char> line, int offset, bool includeHour = false)
+		=> DateOnly.ParseExact(line.Slice(offset - 1, includeHour ? 8 : 10), "yyyyMMdd");
 
 	/// <summary>
 	/// Inserts value into a portion of a line. Blank-fills extra characters.
@@ -166,6 +170,7 @@ public static class Strategies
 	/// <param name="result">Line to insert the value into.</param>
 	/// <param name="offset">1-based character index into line for beginning of <paramref name="value"/>.</param>
 	/// <param name="value">Value to insert. If <see langword="null"/>, inserts all blanks.</param>
-	public static void WriteDate(char[] result, int offset, DateOnly value)
-		=> value.ToString("yyyyMMdd").CopyTo(0, result, offset - 1, 8);
+	/// <param name="includeHour">Also write hour, in addition to year and month.</param>
+	public static void WriteDate(char[] result, int offset, DateOnly value, bool includeHour = false)
+		=> value.ToString("yyyyMMdd").CopyTo(0, result, offset - 1, includeHour ? 8 : 10);
 }
