@@ -7,7 +7,7 @@ namespace Fhwa.Tmas.Test;
 /// Pulled from: https://gist.github.com/jhgbrt/4bf2cf7e5c077f7326c8b82160a9c59a with minimal changes.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class ImmutableListWithValueSemantics<T> : IImmutableList<T>, IEquatable<IImmutableList<T>>
+public sealed class ImmutableListWithValueSemantics<T> : IImmutableList<T>, IEquatable<IImmutableList<T>>
 {
 	public ImmutableListWithValueSemantics(IImmutableList<T> list) => _list = list;
 
@@ -49,7 +49,7 @@ public class ImmutableListWithValueSemantics<T> : IImmutableList<T>, IEquatable<
 	private readonly IImmutableList<T> _list;
 }
 
-static class ImmutableListExtensions
+public static class ImmutableListExtensions
 {
 	public static IImmutableList<T> WithValueSemantics<T>(this IImmutableList<T> list) => new ImmutableListWithValueSemantics<T>(list);
 }
