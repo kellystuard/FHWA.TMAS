@@ -55,6 +55,7 @@ public sealed class TestStrategies
 
 	public static IEnumerable<object[]> DataDecimal()
 	{
+		yield return new object[] { "\0\0867515", 3, 6, 867.515, 3 };
 		yield return new object[] { "\0007856\0", 2, 6, 7.856, 3 };
 		yield return new object[] { "39178751", 1, 8, 39.178751, 6 };
 	}

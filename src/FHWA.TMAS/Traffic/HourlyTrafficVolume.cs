@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
+﻿using System.Collections.Immutable;
 
 namespace Fhwa.Tmas.Traffic;
 
@@ -28,22 +26,22 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// </summary>
 	public Fips.State StateCode { get; init; }
 	/// <summary>
-	/// Functional Classification Code (Columns 16-17) – Critical
+	/// Functional Classification Code (Columns 4-5) – Critical
 	/// </summary>
 	/// <remarks>
-	/// Column 16 contains one of the Functional Classification Codes listed in Table 7-5.
+	/// Column 4 contains one of the Functional Classification Codes listed in Table 7-5.
 	/// </remarks>
 	public FunctionalPurpose FunctionalPurpose { get; init; }
 	/// <summary>
-	/// Functional Classification Code (Columns 16-17) – Critical
+	/// Functional Classification Code (Columns 4-5) – Critical
 	/// </summary>
 	/// <remarks>
-	/// Column 17 contains either an “R” for rural or “U” for urban.For example, a code of 2R indicates 
+	/// Column 5 contains either an “R” for rural or “U” for urban.For example, a code of 2R indicates 
 	/// a Rural Principal Arterial – Other Freeways and Expressways.
 	/// </remarks>
 	public FunctionalType FunctionalTypeCode { get; init; }
 	/// <summary>
-	/// Station Identification (Columns 4-9) – Critical
+	/// Station Identification (Columns 6-11) – Critical
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -59,7 +57,7 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// </remarks>
 	public string StationID { get; init; }
 	/// <summary>
-	/// Direction of Travel Code (Column 10) – Critical
+	/// Direction of Travel Code (Column 12) – Critical
 	/// </summary>
 	/// <remarks>
 	/// Combined directions are only permitted for volume stations only.There should be a separate
@@ -68,7 +66,7 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// </remarks>
 	public DirectionOfTravel DirectionOfTravelCode { get; init; }
 	/// <summary>
-	/// Lane of Travel (Column 11) – Critical
+	/// Lane of Travel (Column 13) – Critical
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -83,7 +81,7 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// </remarks>
 	public int LaneOfTravelCode { get; init; }
 	/// <summary>
-	/// Date of Data (Columns 14-17 and 18-19)
+	/// Date of Data (Columns 14-17, 18-19, and 20-21)
 	/// </summary>
 	/// <remarks>
 	/// Covers 3 fields: Year of Data, Month of Data, and Day of Data.
@@ -100,7 +98,7 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// <remarks>
 	/// Enter the traffic volume counted during the hour covered in the columns indicated in Table 7-10.
 	/// </remarks>
-	public int?[] VolumeCounted { get; init; }
+	public IImmutableList<int?> VolumeCounted { get; init; }
 	/// <summary>
 	/// Restrictions (Column 143) - Critical
 	/// </summary>
