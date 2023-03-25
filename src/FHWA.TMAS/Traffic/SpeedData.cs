@@ -1,4 +1,6 @@
-﻿namespace Fhwa.Tmas.Traffic;
+﻿using System.Collections.Immutable;
+
+namespace Fhwa.Tmas.Traffic;
 
 /// <summary>
 /// Holds the fields that represent TMAS traffic speed data. Represents the hydrated form of the record 
@@ -176,5 +178,5 @@ public readonly record struct SpeedData : ITrafficData
 	/// speed range during the time period being reported, enter “0”.
 	/// </para>
 	/// </remarks>
-	public int?[] SpeedBins { get; init; }
+	public IImmutableList<int?> SpeedBins { get; init; }
 }

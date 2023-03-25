@@ -1,4 +1,6 @@
-﻿namespace Fhwa.Tmas.Traffic;
+﻿using System.Collections.Immutable;
+
+namespace Fhwa.Tmas.Traffic;
 
 /// <summary>
 /// Holds the fields that represent TMAS traffic volume data. Represents the hydrated form of the record 
@@ -96,7 +98,7 @@ public readonly record struct HourlyTrafficVolume : ITrafficData
 	/// <remarks>
 	/// Enter the traffic volume counted during the hour covered in the columns indicated in Table 7-10.
 	/// </remarks>
-	public int?[] VolumeCounted { get; init; }
+	public IImmutableList<int?> VolumeCounted { get; init; }
 	/// <summary>
 	/// Restrictions (Column 143) - Critical
 	/// </summary>

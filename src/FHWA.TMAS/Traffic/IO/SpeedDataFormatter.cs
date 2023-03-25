@@ -1,4 +1,6 @@
-﻿namespace Fhwa.Tmas.Traffic.IO;
+﻿using System.Collections.Immutable;
+
+namespace Fhwa.Tmas.Traffic.IO;
 
 /// <summary>
 /// Handles the formatting to and from disk for <see cref="SpeedData"/>.
@@ -23,6 +25,10 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 		if (Strategies.ReadChar(line, 1) != 'T')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read speed data records");
 
+		var list = new int?[25];
+		for (int i = 0; i < 25; i++)
+			list[i] = Strategies.ReadInt32(line, 31 + (i * 5), 5);
+
 		var result = new SpeedData()
 		{
 			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(),
@@ -34,11 +40,8 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 			DefinitionOfFirstSpeedBin = Strategies.ReadNumber(line, 23),
 			NumberOfSpeedBins = Strategies.ReadInt32(line, 24, 2),
 			TotalIntervalVolume = Strategies.ReadInt32(line, 26, 5),
-			SpeedBins = new int?[25],
+			SpeedBins = list.ToImmutableArray(),
 		};
-
-		for (int i = 0; i < 25; i++)
-			result.SpeedBins[i] = Strategies.ReadInt32(line, 31 + (i * 5), 5);
 
 		return result;
 	}

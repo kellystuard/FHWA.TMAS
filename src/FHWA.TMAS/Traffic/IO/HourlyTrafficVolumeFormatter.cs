@@ -1,4 +1,6 @@
-﻿namespace Fhwa.Tmas.Traffic.IO;
+﻿using System.Collections.Immutable;
+
+namespace Fhwa.Tmas.Traffic.IO;
 
 /// <summary>
 /// Handles the formatting to and from disk for <see cref="HourlyTrafficVolume"/>.
@@ -16,6 +18,10 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 		if (Strategies.ReadChar(line, 1) != '3')
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read hourly traffic volume records");
 
+		var list = new int?[24];
+		for (int i = 0; i < 24; i++)
+			list[i] = Strategies.ReadInt32(line, 23 + (i * 5), 5);
+
 		var result = new HourlyTrafficVolume()
 		{
 			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.StateCode) + "is not optional"),
@@ -25,12 +31,9 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 12) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.DirectionOfTravelCode) + "is not optional"),
 			LaneOfTravelCode = Strategies.ReadNumber(line, 13) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.LaneOfTravelCode) + "is not optional"),
 			DateOfData = Strategies.ReadDate(line, 14),
-			VolumeCounted = new int?[24],
+			VolumeCounted = list.ToImmutableArray(),
 			Restrictions = (Restrictions?)Strategies.ReadChar(line, 143) ?? throw new NullReferenceException(nameof(HourlyTrafficVolume.Restrictions) + "is not optional"),
 		};
-
-		for (int i = 0; i < 24; i++)
-			result.VolumeCounted[i] = Strategies.ReadInt32(line, 23 + (i * 5), 5);
 
 		return result;
 	}
