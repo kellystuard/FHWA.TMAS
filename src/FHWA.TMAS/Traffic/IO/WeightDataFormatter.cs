@@ -29,10 +29,10 @@ public sealed class WeightDataFormatter : ITrafficFormatter<WeightData>
 
 		var axleList = new int?[13];
 		for (int i = 0; i < axleCount; i++)
-			axleList[i] = Strategies.ReadInt32(line, 35 + (i * 5 * 2), 5);
+			axleList[i] = Strategies.ReadInt32(line, 35 + (i * (5 + 4)), 5);
 		var spacingList = new int?[12];
 		for (int i = 0; i < axleCount - 1; i++)
-			spacingList[i] = Strategies.ReadInt32(line, 40 + (i * 5 * 2), 5);
+			spacingList[i] = Strategies.ReadInt32(line, 40 + (i * (5 + 4)), 4);
 
 		var result = new WeightData()
 		{
@@ -55,7 +55,7 @@ public sealed class WeightDataFormatter : ITrafficFormatter<WeightData>
 	/// <inheritdoc />
 	public ReadOnlySpan<char> ToLine(WeightData item)
 	{
-		var result = new char[155];
+		var result = new char[147];
 
 		Strategies.WriteChar(result, 1, 'W');
 		Strategies.WriteInt32(result, 2, 2, (int)item.StateCode);
@@ -68,9 +68,9 @@ public sealed class WeightDataFormatter : ITrafficFormatter<WeightData>
 		Strategies.WriteInt32(result, 27, 6, item.TotalWeightOfVehicle);
 		Strategies.WriteInt32(result, 33, 2, item.NumberOfAxles);
 		for (int i = 0; i < item.AxleWeights.Count; i++)
-			Strategies.WriteInt32(result, 35 + (i * 5 * 2), 5, item.AxleWeights[i]);
+			Strategies.WriteInt32(result, 35 + (i * (5 + 4)), 5, item.AxleWeights[i]);
 		for (int i = 0; i < item.AxleSpacing.Count; i++)
-			Strategies.WriteInt32(result, 40 + (i * 5 * 2), 5, item.AxleSpacing[i]);
+			Strategies.WriteInt32(result, 40 + (i * (5 + 4)), 4, item.AxleSpacing[i]);
 
 		return result;
 	}
