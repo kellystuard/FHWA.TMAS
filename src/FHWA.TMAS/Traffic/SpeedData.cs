@@ -95,7 +95,7 @@ public readonly record struct SpeedData : ITrafficData
 	/// A 60-minute time interval is assumed if this column is left blank.This field can be used to
 	/// designate either 5-minute or 15-minute binned speed data.
 	/// </remarks>
-	public SpeedDataTimeInterval? TimeInterval { get; init; }
+	public TimeInterval? TimeInterval { get; init; }
 	/// <summary>
 	/// Definition of First Speed Bin (Column 23) – Optional
 	/// </summary>

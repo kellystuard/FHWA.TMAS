@@ -14,9 +14,9 @@ namespace Fhwa.Tmas.Traffic;
 /// any hours during which no data are being reported. Table 7-9 summarizes the Hourly Traffic Volume
 /// record.
 /// </para>
+/// <para>
 /// All numeric fields should be right-justified and blank fill the columns for which no data are being
 /// reported.
-/// <para>
 /// </para>
 /// </remarks>
 public readonly record struct HourlyTrafficVolume : ITrafficData

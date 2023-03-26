@@ -26,7 +26,7 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read speed data records");
 
 		var list = new int?[25];
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < list.Length; i++)
 			list[i] = Strategies.ReadInt32(line, 31 + (i * 5), 5);
 
 		var result = new SpeedData()
@@ -36,7 +36,7 @@ public sealed class SpeedDataFormatter : ITrafficFormatter<SpeedData>
 			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 10) ?? throw new NullReferenceException(),
 			LaneOfTravelCode = Strategies.ReadNumber(line, 11) ?? throw new NullReferenceException(nameof(SpeedData.LaneOfTravelCode) + "is not optional"),
 			DateOfData = Strategies.ReadDateTime(line, 12),
-			TimeInterval = (SpeedDataTimeInterval?)Strategies.ReadChar(line, 22),
+			TimeInterval = (TimeInterval?)Strategies.ReadChar(line, 22),
 			DefinitionOfFirstSpeedBin = Strategies.ReadNumber(line, 23),
 			NumberOfSpeedBins = Strategies.ReadInt32(line, 24, 2),
 			TotalIntervalVolume = Strategies.ReadInt32(line, 26, 5),

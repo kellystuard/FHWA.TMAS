@@ -45,7 +45,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeA,
+				TimeInterval = TimeInterval.CodeA,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 375,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 7, 12, 48, 165, 86, 31, 21, 5, 0, null, null, null, null, null, null, null, null, null, null }
@@ -59,7 +59,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeB,
+				TimeInterval = TimeInterval.CodeB,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 305,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 4, 5, 8, 25, 143, 79, 25, 13, 3, 0, null, null, null, null, null, null, null, null, null, null }
@@ -73,7 +73,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeC,
+				TimeInterval = TimeInterval.CodeC,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 266,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 3, 3, 32, 131, 58, 26, 11, 1, 1, null, null, null, null, null, null, null, null, null, null }
@@ -87,7 +87,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeD,
+				TimeInterval = TimeInterval.CodeD,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 268,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 2, 4, 37, 128, 43, 39, 12, 3, 0, null, null, null, null, null, null, null, null, null, null }
@@ -101,7 +101,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeE,
+				TimeInterval = TimeInterval.CodeE,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 248,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 1, 1, 3, 39, 119, 39, 28, 15, 4, 0, null, null, null, null, null, null, null, null, null, null }
@@ -115,7 +115,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeF,
+				TimeInterval = TimeInterval.CodeF,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 231,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 2, 2, 25, 108, 42, 32, 15, 5, 0, null, null, null, null, null, null, null, null, null, null }
@@ -129,7 +129,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeG,
+				TimeInterval = TimeInterval.CodeG,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 197,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 1, 18, 99, 35, 28, 11, 5, 0, null, null, null, null, null, null, null, null, null, null }
@@ -143,7 +143,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeH,
+				TimeInterval = TimeInterval.CodeH,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 183,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 13, 98, 32, 27, 9, 4, 0, null, null, null, null, null, null, null, null, null, null }
@@ -157,7 +157,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeI,
+				TimeInterval = TimeInterval.CodeI,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 173,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 8, 95, 31, 28, 8, 3, 0, null, null, null, null, null, null, null, null, null, null }
@@ -171,7 +171,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeJ,
+				TimeInterval = TimeInterval.CodeJ,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 159,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 7, 92, 28, 25, 5, 2, 0, null, null, null, null, null, null, null, null, null, null }
@@ -185,7 +185,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeK,
+				TimeInterval = TimeInterval.CodeK,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 154,
 				SpeedBins = new int?[] {0, 0, 0, 0, 0, 0, 0, 0, 11, 88, 25, 26, 3, 1, 0, null, null, null, null, null, null, null, null, null, null }
@@ -199,7 +199,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.North,
-				TimeInterval = SpeedDataTimeInterval.CodeL,
+				TimeInterval = TimeInterval.CodeL,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 145,
 				SpeedBins = new int?[] {0, 0, 0, 0, 0, 0, 0, 0, 12, 84, 21, 24, 4, 0, 0, null, null, null, null, null, null, null, null, null, null }
@@ -213,7 +213,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeA,
+				TimeInterval = TimeInterval.CodeA,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 427,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 8, 13, 49, 15, 60008, 70003, 20002, 20000, 60000, null, null, null, null, null, null, null, null, null, null }
@@ -227,7 +227,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeB,
+				TimeInterval = TimeInterval.CodeB,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 307,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 6, 9, 26, 14, 10008, 20002, 70001, 10000, 50000, null, null, null, null, null, null, null, null, null, null }
@@ -241,7 +241,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeC,
+				TimeInterval = TimeInterval.CodeC,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 268,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 2, 3, 31, 12, 80006, 10002, 50001, 30000, 40001, null, null, null, null, null, null, null, null, null, null }
@@ -255,7 +255,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeD,
+				TimeInterval = TimeInterval.CodeD,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 294,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 1, 35, 13, 40006, 50003, 60001, 50000, 70001, null, null, null, null, null, null, null, null, null, null }
@@ -269,7 +269,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeE,
+				TimeInterval = TimeInterval.CodeE,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 277,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 7, 31, 12, 10005, 80003, 10002, 10000, 80000, null, null, null, null, null, null, null, null, null, null }
@@ -283,7 +283,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeF,
+				TimeInterval = TimeInterval.CodeF,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 288,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 2, 26, 11, 50005, 50003, 20002, 20000, 70001, null, null, null, null, null, null, null, null, null, null }
@@ -297,7 +297,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeG,
+				TimeInterval = TimeInterval.CodeG,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 272,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 4, 27, 12, 20005, 60003, 50002, 30000, 50000, null, null, null, null, null, null, null, null, null, null }
@@ -311,7 +311,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeH,
+				TimeInterval = TimeInterval.CodeH,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 242,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 3, 21, 11, 40004, 90003, 30001, 80000, 40000, null, null, null, null, null, null, null, null, null, null }
@@ -325,7 +325,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeI,
+				TimeInterval = TimeInterval.CodeI,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 212,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 15, 10, 40004, 80002, 40001, 90000, 20000, null, null, null, null, null, null, null, null, null, null }
@@ -339,7 +339,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeJ,
+				TimeInterval = TimeInterval.CodeJ,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 198,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 12, 9, 80004, 70002, 50001, 30000, 30000, null, null, null, null, null, null, null, null, null, null }
@@ -353,7 +353,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeK,
+				TimeInterval = TimeInterval.CodeK,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 185,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 70005, 10002, 40001, 20000, 30000, null, null, null, null, null, null, null, null, null, null }
@@ -367,7 +367,7 @@ public sealed class TestSpeedDataFormatter
 			common with
 			{
 				DirectionOfTravelCode = DirectionOfTravel.South,
-				TimeInterval = SpeedDataTimeInterval.CodeL,
+				TimeInterval = TimeInterval.CodeL,
 				DefinitionOfFirstSpeedBin = null,
 				TotalIntervalVolume = 155,
 				SpeedBins = new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 60004, 40002, 10000, 90000, 0, null, null, null, null, null, null, null, null, null, null }
