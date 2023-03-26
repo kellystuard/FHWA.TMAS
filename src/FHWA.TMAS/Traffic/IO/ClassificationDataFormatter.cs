@@ -59,7 +59,7 @@ public sealed class ClassificationDataFormatter : ITrafficFormatter<Classificati
 			DateOfData = Strategies.ReadDateTime(line, 12),
 			TimeInterval = (TimeInterval?)Strategies.ReadChar(line, 22),
 			TotalIntervalVolume = Strategies.ReadInt32(line, 23, 5),
-			Restrictions = (Restrictions?)Strategies.ReadNumber(line, 28) ?? throw new NullReferenceException(nameof(ClassificationData.Restrictions) + "is not optional"),
+			Restrictions = (Restrictions?)Strategies.ReadChar(line, 28) ?? throw new NullReferenceException(nameof(ClassificationData.Restrictions) + "is not optional"),
 			ClassBins = list.ToImmutableArray(),
 		};
 
@@ -79,9 +79,9 @@ public sealed class ClassificationDataFormatter : ITrafficFormatter<Classificati
 		Strategies.WriteDateTime(result, 12, item.DateOfData);
 		Strategies.WriteChar(result, 22, (char?)item.TimeInterval);
 		Strategies.WriteInt32(result, 23, 5, item.TotalIntervalVolume);
-		Strategies.WriteNumber(result, 28, (int)item.Restrictions);
+		Strategies.WriteChar(result, 28, (char)item.Restrictions);
 		for (int i = 0; i < item.ClassBins.Count; i++)
-			Strategies.WriteInt32(result, 28 + (i * 5), 5, item.ClassBins[i]);
+			Strategies.WriteInt32(result, 29 + (i * 5), 5, item.ClassBins[i]);
 
 		return result;
 	}

@@ -126,7 +126,7 @@ public readonly record struct ClassificationData : ITrafficData
 	/// </remarks>
 	public int? TotalIntervalVolume { get; init; }
 	/// <summary>
-	/// Restrictions (Column 143) - Critical
+	/// Restrictions (Column 28) - Critical
 	/// </summary>
 	public Restrictions Restrictions { get; init; }
 	/// <summary>
