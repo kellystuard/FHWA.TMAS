@@ -1,9 +1,7 @@
 ﻿using Fhwa.Tmas.Fips;
 using Fhwa.Tmas.Traffic;
 using Fhwa.Tmas.Traffic.IO;
-using System.Collections;
 using System.Collections.Immutable;
-using System.Runtime.Serialization;
 
 namespace Fhwa.Tmas.Test.Traffic.IO;
 

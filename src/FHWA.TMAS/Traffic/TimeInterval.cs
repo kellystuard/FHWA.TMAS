@@ -8,7 +8,7 @@
 /// For 15-minute binned intervals of speed data use 1-4.
 /// For 5-minute binned intervals of speed data use A-L.
 /// </remarks>
-public enum SpeedDataTimeInterval
+public enum TimeInterval
 {
 	/// <summary>For the 15-minute interval 0.0-14.999</summary>
 	Code1 = '1',

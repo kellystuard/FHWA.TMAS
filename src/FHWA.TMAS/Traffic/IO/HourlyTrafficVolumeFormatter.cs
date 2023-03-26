@@ -19,7 +19,7 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 			throw new ArgumentOutOfRangeException(nameof(line), Strategies.ReadChar(line, 1), "Can only read hourly traffic volume records");
 
 		var list = new int?[24];
-		for (int i = 0; i < 24; i++)
+		for (int i = 0; i < list.Length; i++)
 			list[i] = Strategies.ReadInt32(line, 23 + (i * 5), 5);
 
 		var result = new HourlyTrafficVolume()
@@ -52,7 +52,7 @@ public sealed class HourlyTrafficVolumeFormatter : ITrafficFormatter<HourlyTraff
 		Strategies.WriteNumber(result, 13, item.LaneOfTravelCode);
 		Strategies.WriteDate(result, 14, item.DateOfData);
 		Strategies.WriteNumber(result, 22, (int)item.DayOfWeek + 1);
-		for (int i = 0; i < 24; i++)
+		for (int i = 0; i < item.VolumeCounted.Count; i++)
 			Strategies.WriteInt32(result, 23 + (i * 5), 5, item.VolumeCounted[i]);
 		Strategies.WriteChar(result, 143, (char)item.Restrictions);
 
