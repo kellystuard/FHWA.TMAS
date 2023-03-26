@@ -52,9 +52,9 @@ public sealed class ClassificationDataFormatter : ITrafficFormatter<Classificati
 
 		var result = new ClassificationData()
 		{
-			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(),
-			StationID = Strategies.ReadLeftZeroFilledString(line, 4, 6) ?? throw new NullReferenceException(),
-			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 10) ?? throw new NullReferenceException(),
+			StateCode = (Fips.State?)Strategies.ReadInt32(line, 2, 2) ?? throw new NullReferenceException(nameof(ClassificationData.StateCode) + "is not optional"),
+			StationID = Strategies.ReadLeftZeroFilledString(line, 4, 6) ?? throw new NullReferenceException(nameof(ClassificationData.StationID) + "is not optional"),
+			DirectionOfTravelCode = (DirectionOfTravel?)Strategies.ReadChar(line, 10) ?? throw new NullReferenceException(nameof(ClassificationData.DirectionOfTravelCode) + "is not optional"),
 			LaneOfTravelCode = Strategies.ReadNumber(line, 11) ?? throw new NullReferenceException(nameof(ClassificationData.LaneOfTravelCode) + "is not optional"),
 			DateOfData = Strategies.ReadDateTime(line, 12),
 			TimeInterval = (TimeInterval?)Strategies.ReadChar(line, 22),
