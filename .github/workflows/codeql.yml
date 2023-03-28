@@ -20,6 +20,12 @@ on:
   schedule:
     - cron: '21 17 * * 5'
 
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
 jobs:
   analyze:
     name: Analyze
