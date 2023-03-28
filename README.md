@@ -1,9 +1,25 @@
 # FHWA.TMAS
 Utility Library for generation of traffic events and reading/writing the format required by the national databases maintained by Federal Highway Administration (FHWA), including the Travel Monitoring Analysis System (TMAS).
 
+The data formats are defined in the U.S. DOT FHWA's [Traffic Monitoring Guide](https://www.fhwa.dot.gov/policyinformation/tmguide/tmg_fhwa_pl_17_003.pdf) on chapter 7.
+
+The following traffic events are supported:
+* Station Description Data Format
+* Traffic Volume Data Format
+* Speed Data Format
+* Vehicle Classification Data Format
+* Weight Data Format
+ 
+The following traffic events still need to be coded:
+* Detailed Per Vehicle Data Format (PVF)
+* Nonmotorized Count Station Description Data Format
+* Nonmotorized Count Data Format
+
+Also need to give better validation options on reading and writing, as well as giving better messages on failure.
+ 
 # Acronyms
 
-Taken from https://www.fhwa.dot.gov/policyinformation/tmguide/tmg_fhwa_pl_17_003.pdf (Appendix B)
+Taken from [Traffic Monitoring Guide](https://www.fhwa.dot.gov/policyinformation/tmguide/tmg_fhwa_pl_17_003.pdf): Appendix B
 
 | Acronym | Title                                                              |
 |---------|--------------------------------------------------------------------|
